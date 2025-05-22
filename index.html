@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoomaneha ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0000 0%, #330000 100%);
+            color: #fff;
+        }
+        .luxury-text {
+            font-family: 'Playfair Display', serif;
+        }
+        .heart-beat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .memory-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+        .memory-card-front, .memory-card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5rem;
+        }
+        .memory-card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .memory-card-front {
+            background: linear-gradient(45deg, #4a0000, #800000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .memory-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .memory-image:hover {
+            transform: scale(1.05);
+        }
+        .flower {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0;
+            animation: bloom 3s ease-in-out forwards;
+            font-size: 3rem;
+        }
+        @keyframes bloom {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .color-wheel {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: conic-gradient(
+                #FF6B6B 0deg 20deg,
+                #4ECDC4 20deg 40deg,
+                #45B7D1 40deg 60deg,
+                #96CEB4 60deg 80deg,
+                #FFEEAD 80deg 100deg,
+                #D4A5A5 100deg 120deg,
+                #9B59B6 120deg 140deg,
+                #3498DB 140deg 160deg,
+                #E74C3C 160deg 180deg,
+                #2ECC71 180deg 200deg,
+                #F1C40F 200deg 220deg,
+                #E67E22 220deg 240deg,
+                #1ABC9C 240deg 260deg,
+                #34495E 260deg 280deg,
+                #7F8C8D 280deg 300deg,
+                #16A085 300deg 320deg,
+                #8E44AD 320deg 340deg,
+                #2980B9 340deg 360deg
+            );
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .color-wheel:hover {
+            transform: scale(1.05);
+        }
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header Section -->
+        <header class="text-center mb-16">
+            <h1 class="luxury-text text-5xl md:text-6xl mb-4 text-white">hoomaneha ❤️</h1>
+            <p class="text-xl text-pink-200">Missing you so much, Hooman</p>
+        </header>
+
+        <!-- Countdown Section -->
+        <section class="mb-16 text-center">
+            <h2 class="luxury-text text-3xl mb-8">Counting the Days Until We Meet Again</h2>
+            <div id="countdown" class="grid grid-cols-4 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <div id="days" class="text-4xl font-bold text-pink-300">00</div>
+                    <div class="text-sm text-pink-200">Days</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <div id="hours" class="text-4xl font-bold text-pink-300">00</div>
+                    <div class="text-sm text-pink-200">Hours</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <div id="minutes" class="text-4xl font-bold text-pink-300">00</div>
+                    <div class="text-sm text-pink-300">Minutes</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <div id="seconds" class="text-4xl font-bold text-pink-300">00</div>
+                    <div class="text-sm text-pink-200">Seconds</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playlist Section -->
+        <section class="mb-16 text-center">
+            <h2 class="luxury-text text-3xl mb-8">Our Music</h2>
+            <a href="https://open.spotify.com/playlist/4PlkZmmKoGQBeCsGE71Cv5?si=7d19658c113c403d" 
+               target="_blank" 
+               class="inline-block bg-pink-600 hover:bg-pink-700 text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105">
+                Listen to Our Playlist ❤️
+            </a>
+        </section>
+
+        <!-- Love Messages Section -->
+        <section class="mb-16">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-8 mb-6">
+                    <p class="text-xl text-center text-pink-200">"My favorite place in the world is next to you."</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-8 mb-6">
+                    <p class="text-xl text-center text-pink-200">“I exist in two places, here and where you are."</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-8">
+                    <p class="text-xl text-center text-pink-200">"You are my today and all of my tomorrows."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Movie Generator Section -->
+        <section class="mb-16 text-center">
+            <h2 class="luxury-text text-3xl mb-8">Let's Pick Something to Watch</h2>
+            <div class="color-wheel" id="colorWheel">
+                <div class="wheel-center">SPIN</div>
+            </div>
+            <div id="selectedMovie" class="mt-8 text-2xl text-pink-300"></div>
+        </section>
+
+        <!-- Flower Animation Section -->
+        <section class="mb-16 text-center relative h-64">
+            <h2 class="luxury-text text-3xl mb-8">Some virtual flowers for my love ^>^ </h2>
+            <div id="flowerContainer" class="relative h-full"></div>
+        </section>
+
+        <!-- Memory Game Section -->
+        <section class="mb-16">
+            <h2 class="luxury-text text-3xl mb-8 text-center">Our Memories Together</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-4 gap-4" id="memory-game">
+                    <!-- Memory cards will be added here -->
+                </div>
+                <div id="game-message" class="mt-8 text-center text-2xl text-pink-300 hidden">
+                    I love you more than words can express, Hooman ❤️
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const meetingDate = new Date('June 10, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = meetingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Memory Game
+        const memoryGame = document.getElementById('memory-game');
+        const gameMessage = document.getElementById('game-message');
+        const images = ['pic1.png', 'pic2.png', 'pic3.png', 'pic4.png', 'pic5.png', 'n1.jpg', 'h1.png', 'h2.png', 'n2.png'];
+        let cards = [...images, ...images];
+        let flippedCards = [];
+        let matchedPairs = 0;
+
+        // Shuffle cards
+        cards.sort(() => Math.random() - 0.5);
+
+        // Create memory cards
+        cards.forEach((image, index) => {
+            const card = document.createElement('div');
+            card.className = 'memory-card relative h-40 cursor-pointer';
+            card.innerHTML = `
+                <div class="memory-card-front absolute w-full h-full flex items-center justify-center">
+                    <span class="text-4xl">❤️</span>
+                </div>
+                <div class="memory-card-back absolute w-full h-full">
+                    <img src="images/${image}" 
+                         alt="Memory" 
+                         class="memory-image"
+                         onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTEyIDIyYzUuNTIzIDAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTB6Ii8+PHBhdGggZD0iTTEyIDh2NCIvPjxwYXRoIGQ9Ik0xMiAxNmguMDEiLz48L3N2Zz4='; this.alt='Image not found';">
+                </div>
+            `;
+            card.dataset.image = image;
+            card.addEventListener('click', flipCard);
+            memoryGame.appendChild(card);
+        });
+
+        // Remove extra cards to make it a perfect square (4x4)
+        const extraCards = memoryGame.children.length - 16;
+        for (let i = 0; i < extraCards; i++) {
+            memoryGame.removeChild(memoryGame.lastChild);
+        }
+
+        function flipCard() {
+            if (flippedCards.length === 2) return;
+            if (this.classList.contains('flipped')) return;
+
+            this.classList.add('flipped');
+            flippedCards.push(this);
+
+            if (flippedCards.length === 2) {
+                setTimeout(checkMatch, 1000);
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            if (card1.dataset.image === card2.dataset.image) {
+                matchedPairs++;
+                if (matchedPairs === images.length) {
+                    gameMessage.classList.remove('hidden');
+                }
+            } else {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+            }
+            flippedCards = [];
+        }
+
+        // Movie Generator
+        const movies = [
+            'Iron Man', 'To All the Boys I\'ve Loved Before', 'Pursuit of Happyness',
+            'Finding Nemo', 'Up', 'Billy Madison', 'Aladdin', 'Rapunzel',
+            'One Day', 'The Greatest Showman', 'Percy Jackson', 'Spiderman',
+            'Cunk on Earth', 'The Office', 'Back to the Future', 'Stranger Things',
+            'Harry Potter'
+        ];
+
+        const colorWheel = document.getElementById('colorWheel');
+        const selectedMovie = document.getElementById('selectedMovie');
+        let isSpinning = false;
+
+        colorWheel.addEventListener('click', () => {
+            if (isSpinning) return;
+            isSpinning = true;
+            
+            const degrees = 1800 + Math.random() * 360; // Spin at least 5 times
+            colorWheel.style.transform = `rotate(${degrees}deg)`;
+            
+            setTimeout(() => {
+                const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+                selectedMovie.textContent = `Let's watch: ${randomMovie} ❤️`;
+                isSpinning = false;
+            }, 3000);
+        });
+
+        // Flower Animation
+        const flowerContainer = document.getElementById('flowerContainer');
+        const flowerEmojis = ['🌸', '🌹', '🌺', '🌻', '🌼', '💐', '🌷'];
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+            flower.style.left = `${Math.random() * 100}%`;
+            flower.style.top = `${Math.random() * 100}%`;
+            flower.style.animationDelay = `${Math.random() * 2}s`;
+            flowerContainer.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 3000);
+        }
+
+        setInterval(createFlower, 1000);
+    </script>
+</body>
+</html>
