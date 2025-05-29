@@ -337,7 +337,13 @@
         const memoryGame = document.getElementById('memory-game');
         const gameMessage = document.getElementById('game-message');
         const images = ['pic1.png', 'pic2.png', 'pic3.png', 'pic4.png', 'pic5.png', 'n1.jpg', 'h1.png', 'h2.png', 'n2.png'];
-        let cards = [...images, ...images];
+        
+        // Create pairs array with exactly 8 pairs (16 cards total)
+        let cards = [];
+        for (let i = 0; i < 8; i++) {
+            cards.push(images[i], images[i]);
+        }
+        
         let flippedCards = [];
         let matchedPairs = 0;
 
@@ -363,12 +369,6 @@
             card.addEventListener('click', flipCard);
             memoryGame.appendChild(card);
         });
-
-        // Remove extra cards to make it a perfect square (4x4)
-        const extraCards = memoryGame.children.length - 16;
-        for (let i = 0; i < extraCards; i++) {
-            memoryGame.removeChild(memoryGame.lastChild);
-        }
 
         function flipCard() {
             if (flippedCards.length === 2) return;
